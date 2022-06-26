@@ -11,7 +11,7 @@ def isPerfectSquare(num):
 
 def factor(string_num):
     num = int(string_num)
-    count = 0
+    count = -1
     root = 0
 
     if num % 2 == 0:
@@ -19,6 +19,9 @@ def factor(string_num):
         return
     if num % 3 == 0:
         print("{}={}*{}".format(num, num // 3, 3))
+        return
+    if num % 5 == 0:
+        print("{}={}*{}".format(num, num // 5, 5))
         return
 
     while root == 0:
