@@ -2,9 +2,17 @@
 import sys
 import math
 
+def isPerfectSquare(num):
+    root = int(math.sqrt(num))
+
+    if num == (root * root):
+        return root
+    return 0
+
 def factor(string_num):
     num = int(string_num)
-    root = int(math.sqrt(num))
+    count = -1
+    root = 0
 
     if num % 2 == 0:
         print("{}={}*{}".format(num, num // 2, 2))
@@ -12,17 +20,15 @@ def factor(string_num):
     if num % 3 == 0:
         print("{}={}*{}".format(num, num // 3, 3))
         return
-    count = 5
-    while count <= root:
-        if num % count == 0:
-            print("{}={}*{}".format(num, num // count, count))
-            return
-        if num % (count + 2) == 0:
-            print("{}={}*{}".format(num, num // (count + 2), count + 2))
-            return
-        count += 6
+    if num % 5 == 0:
+        print("{}={}*{}".format(num, num // 5, 5))
+        return
 
-    print("{}={}*{}".format(num, num, 1))
+    while root == 0:
+        count += 1
+        root = isPerfectSquare(num + (count ** 2))
+
+    print("{}={}*{}".format(num, root + count, root - count))
 
 
 if __name__ == "__main__":
