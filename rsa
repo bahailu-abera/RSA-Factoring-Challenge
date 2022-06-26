@@ -1,0 +1,32 @@
+#!/usr/bin/python3
+import sys
+import math
+
+def factor(string_num):
+    num = int(string_num)
+    root = int(math.sqrt(num))
+
+    for i in range(2, root + 1):
+        if num % i == 0:
+            print("{}={}*{}".format(num, num // i, i))
+            return
+
+    print("{}={}*{}".format(num, num, 1))
+
+
+if __name__ == "__main__":
+    argv = sys.argv
+    length = len(argv)
+
+    if (length != 2):
+        print("Usage {}".format(argv[0]))
+        exit()
+
+    filename = argv[1]
+
+    with open(filename, 'r') as fs:
+        lines = fs.readlines()
+
+        for line in lines:
+            factor(line.strip())
+        fs.close()
