@@ -2,16 +2,30 @@
 import sys
 import math
 
-def factor(string_num):
-    num = int(string_num)
+def isPerfectSquare(num):
     root = int(math.sqrt(num))
 
-    for i in range(2, root + 1):
-        if num % i == 0:
-            print("{}={}*{}".format(num, num // i, i))
-            return
+    if num == (root * root):
+        return root
+    return 0
 
-    print("{}={}*{}".format(num, num, 1))
+def factor(string_num):
+    num = int(string_num)
+    count = 0
+    root = 0
+
+    if num % 2 == 0:
+        print("{}={}*{}".format(num, num // 2, 2))
+        return
+    if num % 3 == 0:
+        print("{}={}*{}".format(num, num // 3, 3))
+        return
+
+    while root == 0:
+        count += 1
+        root = isPerfectSquare(num + (count ** 2))
+
+    print("{}={}*{}".format(num, root + count, root - count))
 
 
 if __name__ == "__main__":
